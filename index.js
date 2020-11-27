@@ -1,8 +1,9 @@
 const express = require('express')
+const morgan = require('morgan');
 const app = express()
 
 app.use(express.json())
-
+app.use(morgan('tiny'))
 
 let persons = [
     {
@@ -42,7 +43,6 @@ app.get('/info', (request, response) => {
 app.get('/api/persons/:id', (req, res) => {
 	const id = Number(req.params.id);
 	persons = persons.find( person => person.id === id);
-	console.log(persons);
 	if (persons) {
 		res.json(persons);
 	} else {
@@ -53,7 +53,6 @@ app.get('/api/persons/:id', (req, res) => {
 app.delete('/api/persons/:id', (req, res) => {
 	const id = Number(req.params.id);
 	persons = persons.filter( person => person.id !== id);
-	console.log(persons);
 	if (persons) {
 		res.status(204).end();
 	} else {
@@ -66,7 +65,7 @@ app.post('/api/persons', (request, response) => {
 	if (!body.name) return response.status(400).json({error: 'name is missing' });
 
 	if (!body.number) return response.status(400).json({ error: 'number is missing' });
-		console.log('finder:', persons.find(ind => ind.name === body.name))
+
 	if (persons.find(ind => ind.name === body.name)){
 		return response.status(400).json({ error: 'This name already exists in the phonebook' });
 	} 
@@ -75,11 +74,8 @@ app.post('/api/persons', (request, response) => {
 		number: body.number,
 		id: Math.floor(Math.random() * 10000000)
 	}
-	console.log('persons', persons)
 	persons = persons.concat(newPerson)
-
-  console.log(newPerson)
-  response.json(newPerson);
+	response.json(newPerson);
 })
 
 
