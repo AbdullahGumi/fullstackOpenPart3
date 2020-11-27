@@ -1,0 +1,27 @@
+{
+  "name": "phonebook-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbdullahGumi/fullstackOpenPart3.git"
+  },
+  "author": "Abdullah Gumi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbdullahGumi/fullstackOpenPart3/issues"
+  },
+  "homepage": "https://github.com/AbdullahGumi/fullstackOpenPart3#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
